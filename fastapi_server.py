@@ -50,14 +50,14 @@ def is_point_on_line(point_a, point_b, point_new, thr):
     return answer
 
 
-def is_dist_correct(mean_dist, new_dist, thr):
+def is_dist_correct(old_dist, new_dist, thr):
     '''
     Равны ли примерно расстояния между (новой точкой + последней трека) и
-    средним расстоянием между точками для данного трека
+    расстоянием между последними точками для данного трека
     '''
 
-    dist_min = (1 - thr) * mean_dist
-    dist_max = (1 + thr) * mean_dist
+    dist_min = (1 - thr) * old_dist
+    dist_max = (1 + thr) * old_dist
 
     if dist_min < new_dist < dist_max:
         answer = True
