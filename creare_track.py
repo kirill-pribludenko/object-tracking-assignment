@@ -4,11 +4,11 @@ from scipy.optimize import curve_fit
 import matplotlib.pyplot as plt
 
 # количество объектов
-tracks_amount = 10
+tracks_amount = 20
 # на сколько пикселей рамка объектов может ложно смещаться (эмуляция не идеальной детекции)
-random_range = 10
+random_range = 20
 # с какой вероятностью объект на фрейме может быть не найдет детектором
-bb_skip_percent = .25
+bb_skip_percent = .2
 
 width = 1000
 height = 800
