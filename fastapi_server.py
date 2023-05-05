@@ -1,6 +1,5 @@
 from fastapi import FastAPI, WebSocket
 from track_0 import track_data, country_balls_amount
-import numpy as np
 import asyncio
 import glob
 from collections import Counter
@@ -20,7 +19,7 @@ def centroid_calc(bbox_value):
     """
     x_center = int((bbox_value[0] + bbox_value[2]) / 2.0)
     y_center = int((bbox_value[1] + bbox_value[3]) / 2.0)
-    
+
     return (x_center, y_center)
 
 
@@ -53,7 +52,7 @@ def is_point_on_line(point_a, point_b, point_new, thr):
 
 def is_dist_correct(mean_dist, new_dist, thr):
     '''
-    Равны ли примерно расстояния между (новой точкой + последней трека) и 
+    Равны ли примерно расстояния между (новой точкой + последней трека) и
     средним расстоянием между точками для данного трека
     '''
 
@@ -250,7 +249,7 @@ def calc_tracker_metrics(id_entrance):
     total_len = 0
     for k, v in id_entrance.items():
         occurence_count = Counter(v)
-        max_occur_value, amount_of_entrance = occurence_count.most_common(1)[0] # value, amount of entrance
+        max_occur_value, amount_of_entrance = occurence_count.most_common(1)[0]  # value, amount of entrance
         # нужно считать подряд идущих, а не по всему списку.  Или брать топ-2
         if max_occur_value is None:
             # amount_of_entrance = 0
@@ -269,7 +268,6 @@ async def websocket_endpoint(websocket: WebSocket):
     centroid_ids_dict = {}
     last_ids_balls_list = []
     ids_balls_dist_dict = {}
-    real_ids_and_track_ids = {}
     await websocket.accept()
     # отправка служебной информации для инициализации объектов
     # класса CountryBall на фронте
